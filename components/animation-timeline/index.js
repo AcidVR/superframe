@@ -27,6 +27,7 @@ AFRAME.registerComponent('animation-timeline', {
 
     this.animationIsPlaying = false;
     this.beginAnimation = this.beginAnimation.bind(this);
+    this.play = this.play.bind(this);
     this.eventDetail = {name: this.id}
     this.time = 0;
     this.timeline = null;
@@ -42,6 +43,17 @@ AFRAME.registerComponent('animation-timeline', {
   },
 
   play: function () {
+    if (this.data.startEvents.length) { return; }
+    const currentTime = this.timeline && this.timeline.currentTime;
+    // Autoplay if startEvents not set.
+    if (!this.animationIsPlaying && currentTime > 0) {
+      this.animationIsPlaying = true;
+    } else {
+      this.beginAnimation();
+    }
+  },
+
+  restart: function () {
     if (this.data.startEvents.length) { return; }
     // Autoplay if startEvents not set.
     this.beginAnimation();
@@ -71,7 +83,7 @@ AFRAME.registerComponent('animation-timeline', {
     timelineEl = document.querySelector(this.data.timeline);
     if (timelineEl.tagName !== 'A-TIMELINE') {
       throw new Error('[animation-timeline] timeline must be a selector to <a-timeline> ' +
-                      'element.');
+        'element.');
     }
 
     this.animationIsPlaying = true;
@@ -129,7 +141,7 @@ AFRAME.registerComponent('animation-timeline', {
 
     if (!els.length) {
       console.warn('[animation-timeline] No entities found for select="' +
-                    select + '"');
+        select + '"');
       return 0;
     }
 
@@ -139,7 +151,7 @@ AFRAME.registerComponent('animation-timeline', {
       component = els[i].components[animationName];
       if (!component) {
         throw new Error('Could not find animation `' + animationName + '` for `' +
-                        animationEl.getAttribute('select') + '`.');
+          animationEl.getAttribute('select') + '`.');
       }
       component.updateConfig();
       component.stopRelatedAnimations();
@@ -153,6 +165,10 @@ AFRAME.registerComponent('animation-timeline', {
 
   pauseAnimation: function () {
     this.animationIsPlaying = false;
+  },
+
+  resumeAnimation: function () {
+    this.animationIsPlaying = true;
   }
 });
 
