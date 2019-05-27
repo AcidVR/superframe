@@ -16,11 +16,11 @@ Useful if using vertex or face coloring as individual geometries' colors can
 still be manipulated individually since this component keeps a `faceIndex` and
 `vertexIndex`.
 
-Doesn't support buffer geometries *yet*.
-
 [Source code for interactive merged geometries](https://github.com/supermedium/superframe/blob/master/components/geometry-merger/examples/basic/index.html#L10)
 
 ### API
+
+For either `geometry-merger` or `buffer-geometry-merger` components:
 
 | Property         | Description                                                                                                                                                                                                                                               | Default Value |
 | --------         | -----------                                                                                                                                                                                                                                               | ------------- |
@@ -42,7 +42,7 @@ Install and use by directly including the [browser files](dist):
 ```html
 <head>
   <title>My A-Frame Scene</title>
-  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-geometry-merger-component/dist/aframe-geometry-merger-component.min.js"></script>
 </head>
 

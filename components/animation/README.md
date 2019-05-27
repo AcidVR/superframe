@@ -1,5 +1,7 @@
 ## aframe-animation-component
 
+> **The animation component is now built into A-Frame v0.9.0**.
+
 [animationtimeline]: https://github.com/supermedium/superframe/tree/master/components/animation-timeline
 
 An animation component for [A-Frame](https://aframe.io) using
@@ -95,8 +97,8 @@ Install and use by directly including the [browser files](dist):
 ```html
 <head>
   <title>My A-Frame Scene</title>
-  <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-  <script src="https://unpkg.com/aframe-animation-component@^5.1.2/dist/aframe-animation-component.min.js"></script>
+  <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-animation-component@5.1.2/dist/aframe-animation-component.min.js"></script>
 </head>
 
 <body>
